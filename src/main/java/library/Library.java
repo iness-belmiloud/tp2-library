@@ -30,6 +30,13 @@ public class Library {
         return copies.get(inventoryNumber);
     }
 
+    public List<Book> searchByTitle(String keyword) {
+        String k = keyword.toLowerCase();
+        return books.values().stream()
+                .filter(b -> b.getTitle().toLowerCase().contains(k))
+                .toList();
+    }
+
     public Loan lend(String memberNumber, String inventoryNumber, LocalDate today) {
         Member member = members.get(memberNumber);
         Copy copy = copies.get(inventoryNumber);
